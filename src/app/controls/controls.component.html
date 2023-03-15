@@ -1,0 +1,23 @@
+<h2>コーヒー品目リスト作成</h2>
+<form [formGroup] = "coffeeForm" novalidate>
+    <div>
+        <label>品目 : <input formControlName = "name"></label>
+    </div>
+    <div>
+        <label>テイスト : <input formControlName = "taste" size = 50></label>
+    </div>
+    <div>
+        <span *ngFor = "let state of hotcoldsel">
+            <input type = "radio" formControlName = "hotcold" [value] = "state">{{state}}
+        </span>
+    </div>
+    <div>
+        <span *ngFor = "let item of addssel">
+            <input type = "checkbox" (change) = "onCheckChanged(item, $event)">{{item}}
+        </span>
+    </div>
+    <div>
+        <label>おつまみ : <select formControlName = "nut"><option *ngFor = "let nut of nutsel">{{nut}}</option></select></label>
+    </div>
+</form>
+<p>フォーム入力値 : {{coffeeForm.value | json}}</p>

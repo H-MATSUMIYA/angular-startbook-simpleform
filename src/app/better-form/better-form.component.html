@@ -1,0 +1,15 @@
+<h2>足し算アプリ（リアクティブフォーム版）</h2>
+<form [formGroup] = "calcForm">
+    <input formControlName = "fieldOne" [class.input-invalid] = "fieldOne?.invalid" [class.input-valid] = "fieldOne?.valid">
+    <span>+</span>
+    <input formControlName = "fieldTwo" [class.input-invalid] = "fieldTwo?.invalid" [class.input-valid] = "fieldTwo?.valid">
+
+    <button (click)="addAndShow()" [disabled] = "calcForm.invalid">CALC</button>
+
+    <div>
+        <span *ngIf = "fieldOne?.invalid" class = "my-invalid">左側のフィールドが空白です</span>
+        <br>
+        <span *ngIf = "fieldTwo?.invalid" class = "my-invalid">右側のフィールドが空白です</span>
+    </div>
+</form>
+<div>{{result}}</div>
