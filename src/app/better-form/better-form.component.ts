@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-better-form',
@@ -10,9 +10,9 @@ export class BetterFormComponent implements OnInit {
 
   result: string = "足し算しましょう";
 
-  calcForm:FormGroup = new FormGroup({
-    fieldOne:new FormControl("", [Validators.required, Validators.maxLength(5)]),
-    fieldTwo:new FormControl("", [Validators.required, Validators.maxLength(5)]),
+  calcForm:UntypedFormGroup = new UntypedFormGroup({
+    fieldOne:new UntypedFormControl("", [Validators.required, Validators.maxLength(5)]),
+    fieldTwo:new UntypedFormControl("", [Validators.required, Validators.maxLength(5)]),
   });
 
   constructor() {}

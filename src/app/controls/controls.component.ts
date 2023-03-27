@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, UntypedFormBuilder, UntypedFormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-controls',
@@ -12,7 +12,7 @@ export class ControlsComponent implements OnInit {
   addssel = ["Milk", "Sugar"];
   nutsel = ["ピーナッツ", "アーモンド", "くるみ"];
 
-  coffeeForm:FormGroup = this.fb.group({
+  coffeeForm:UntypedFormGroup = this.fb.group({
     name: "ブレンド",
     taste: "バランスのよい口当たり",
     hotcold: this.hotcoldsel[0],
@@ -20,7 +20,7 @@ export class ControlsComponent implements OnInit {
     nut: this.nutsel[0],
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
   }
@@ -28,9 +28,9 @@ export class ControlsComponent implements OnInit {
   onCheckChanged(item:string, e:Event){
     const checkbox = e.target as HTMLInputElement;
 
-    let formArray = <FormArray>this.coffeeForm.controls["adds"];
+    let formArray = <UntypedFormArray>this.coffeeForm.controls["adds"];
     if(checkbox.checked){
-      formArray.push(new FormControl(item));
+      formArray.push(new UntypedFormControl(item));
     }else{
       let index = formArray.controls.findIndex(elm => elm.value == item);
       formArray.removeAt(index);
